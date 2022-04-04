@@ -5,11 +5,19 @@ import (
 	"fmt"
 	"os"
 	"todo"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 var todoFileName = ".todo.json"
 
 func main() {
+
+	app := fiber.New()
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
 
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "%s tool. Developed by Spencer Birch\n", os.Args[0])
